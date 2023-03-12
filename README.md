@@ -1,3 +1,21 @@
+# Guide on how to add it in your own mod!
+So, what you'd need to do is:
+* create media folder in openfl folder (source/openfl/media/)
+* in that folder, you copy and paste Sound.hx and SoundChannel.hx
+* create a lime folder and then create new folders (source/lime/media/ and a new folder which is source/lime/_internal/backend/native/)
+* you would need those 2 folders inside of lime for proper functioning
+* copy and paste AudioSource.hx inside lime/media/ folder
+* copy and paste NativeAudioSource.hx inside lime/_internal/backend/native/ folder
+* just add "public static var changeID:Int = 0;" inside of Main.hx after "public static var fpsVar:FPS;" line or whatever lmfao
+
+just compile and you are ready to go!
+-tutorial by redstoneSC with minor fixes (tutorial by DavidDX)
+
+code taken from + credits to:
+- [Codename Engine](https://github.com/YoshiCrafter29/CodenameEngine)
+
+
+
 # Friday Night Funkin' - Psych Engine
 Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
