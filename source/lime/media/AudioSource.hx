@@ -76,7 +76,7 @@ class AudioSource
 
 	@:noCompletion private function set_currentTime(value:Float):Float
 	{
-		return __backend.setCurrentTime(value);
+		return __backend.setCurrentTime(Std.int(value));
 	}
 
 	@:noCompletion private function get_gain():Float
@@ -96,7 +96,7 @@ class AudioSource
 
 	@:noCompletion private function set_length(value:Float):Float
 	{
-		return __backend.setLength(value);
+		return __backend.setLength(Std.int(value));
 	}
 
 	@:noCompletion private function get_loops():Int
