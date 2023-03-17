@@ -147,6 +147,26 @@ class PlayState extends MusicBeatState
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<EventNote> = [];
 
+	public static function formatTime(secs:Float)
+	{
+		var timeString = "";
+		var mins = Std.int(secs / 60);
+		var hours = Std.int(mins / 60);
+		if (hours > 0)
+		{
+			if (hours < 10)
+				timeString += "0";
+			timeString += hours % 24 + ":";
+			if (mins % 60 < 10)
+				timeString += "0";
+		}
+		timeString += mins % 60 + ":";
+		if (Std.int(secs) % 60 < 10)
+			timeString += "0";
+		timeString += Std.int(secs) % 60;
+		return timeString;
+	}
+
 	private var strumLine:FlxSprite;
 
 	//Handles the new epic mega sexy cam code that i've done
@@ -3045,7 +3065,7 @@ class PlayState extends MusicBeatState
 
 					timeTxt.text = formatTime(Math.floor(songCalc / 1000));
 
-					
+
 				// i may do something wahh
 
 					var secondsTotal:Int = Math.floor(songCalc / 1000);
