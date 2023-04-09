@@ -147,26 +147,6 @@ class PlayState extends MusicBeatState
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<EventNote> = [];
 
-	public static function formatTime(secs:Float)
-	{
-		var timeString = "";
-		var mins = Std.int(secs / 60);
-		var hours = Std.int(mins / 60);
-		if (hours > 0)
-		{
-			if (hours < 10)
-				timeString += "0";
-			timeString += hours % 24 + ":";
-			if (mins % 60 < 10)
-				timeString += "0";
-		}
-		timeString += mins % 60 + ":";
-		if (Std.int(secs) % 60 < 10)
-			timeString += "0";
-		timeString += Std.int(secs) % 60;
-		return timeString;
-	}
-
 	private var strumLine:FlxSprite;
 
 	//Handles the new epic mega sexy cam code that i've done
@@ -3054,22 +3034,11 @@ class PlayState extends MusicBeatState
 					if(curTime < 0) curTime = 0;
 					songPercent = (curTime / songLength);
 
-					var curTime:Float = Conductor.songPosition - ClientPrefs.noteOffset;
-					if (curTime < 0)
-						curTime = 0;
-
 					var songCalc:Float = (songLength - curTime);
 					if(ClientPrefs.timeBarType == 'Time Elapsed') songCalc = curTime;
 
-						songCalc = curTime;
-
-					timeTxt.text = formatTime(Math.floor(songCalc / 1000));
-
-
-				// i may do something wahh
-
 					var secondsTotal:Int = Math.floor(songCalc / 1000);
-				//	if(secondsTotal < 0) secondsTotal = 0;
+					if(secondsTotal < 0) secondsTotal = 0;
 
 					if(ClientPrefs.timeBarType != 'Song Name')
 						timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
